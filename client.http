@@ -1,0 +1,47 @@
+### Index method
+GET http://localhost:3000/items
+
+### Test successfully posts an item
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{
+    "category_id": 1,
+    "name" : "Pikachu",
+    "price" : 3.9,
+    "description": "the first pokemon"
+}
+
+### Unsuccessfully post an item
+POST http://localhost:3000/items
+Content-Type: application/json
+
+{
+    "category_id": 1,
+    "name" : "Ba",
+    "price" : 6.9,
+    "description": "the second pokemon"
+}
+
+### show item id: 1
+GET http://localhost:3000/items/1
+
+### unsuccessfully show item id 5000
+GET http://localhost:3000/items/5000
+
+### update an item
+PUT http://localhost:3000/items/1
+Content-Type: application/json
+
+{
+    "category_id": 2,
+    "name" : "Osaka",
+    "price" : 6.9,
+    "description": "the second biggest city"
+}
+
+### successfully delete item with id 1
+DELETE http://localhost:3000/items/1
+
+### unsuccessfully delete item with id 1000
+DELETE http://localhost:3000/api/items/5000
