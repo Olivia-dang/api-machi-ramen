@@ -41,7 +41,48 @@ Content-Type: application/json
 }
 
 ### successfully delete item with id 1
-DELETE http://localhost:3000/items/1
+DELETE http://localhost:3000/items/2
 
 ### unsuccessfully delete item with id 1000
-DELETE http://localhost:3000/api/items/5000
+DELETE http://localhost:3000/items/1000
+
+
+
+### Categories index method
+GET http://localhost:3000/categories
+
+### Test successfully posts an category
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+    "name": "food"
+}
+
+### Unsuccessfully post an category
+POST http://localhost:3000/categories
+Content-Type: application/json
+
+{
+    "name" : "Ba",
+}
+
+### show category id: 1
+GET http://localhost:3000/categories/1
+
+### unsuccessfully show category id 5000
+GET http://localhost:3000/categories/5000
+
+### update a category
+PUT http://localhost:3000/categories/1
+Content-Type: application/json
+
+{
+    "name": "pokemon"
+}
+
+### successfully delete category with id 3
+DELETE http://localhost:3000/categories/3
+
+### unsuccessfully delete category with id 1000
+DELETE http://localhost:3000/categories/3000
