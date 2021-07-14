@@ -54,9 +54,9 @@ GET http://localhost:3000/categories
 ### Test successfully posts an category
 POST http://localhost:3000/categories
 Content-Type: application/json
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2MjM1OTk4LCJleHAiOjE2MjYyMzk1OTgsImp0aSI6ImY2OWMyZGIyLTdlMmYtNDE1Ni1iNzA4LTZhYzFjYjk3ZTllNCJ9.ixUlx-0yk1_rv3ol5s-BQOmste-ifVYlpH8F3V01q-c
 {
-    "name": "food"
+    "name": "drink"
 }
 
 ### Unsuccessfully post an category
@@ -86,3 +86,33 @@ DELETE http://localhost:3000/categories/3
 
 ### unsuccessfully delete category with id 1000
 DELETE http://localhost:3000/categories/3000
+
+
+### create user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "email": "million@ela.com",
+    "password":"password",
+    "password_confirmation":"password"
+}
+
+### Sign in with correct details
+POST http://localhost:3000/users/sign_in
+Content-Type: application/json
+
+{
+    "email":"test@example.com",
+    "password":"12345678"
+}
+
+### Sign in with incorrect details
+POST http://localhost:3000/users/sign_in
+Content-Type: application/json
+
+{
+    "email":"alex3@test.com",
+    "password":"ghgjok;jko"
+}
+
