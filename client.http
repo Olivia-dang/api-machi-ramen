@@ -30,7 +30,7 @@ GET http://localhost:3000/items/1
 GET http://localhost:3000/items/5000
 
 ### update an item
-PUT http://localhost:3000/items/1
+PUT http://localhost:3000/items/2
 Content-Type: application/json
 
 {
