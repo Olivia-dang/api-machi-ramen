@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :roles
   resources :items
   resources :categories
 
@@ -8,5 +9,7 @@ Rails.application.routes.draw do
         sessions: 'users/sessions',
         registrations: 'users/registrations'
     }
+    
   get '/account' => 'accounts#show'
+
 end

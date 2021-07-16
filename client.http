@@ -102,9 +102,11 @@ Content-Type: application/json
 POST http://localhost:3000/users/sign_in
 Content-Type: application/json
 
-{
-    "email":"test@example.com",
-    "password":"12345678"
+{ 
+    "user": {
+            "email":"test@example.com",
+            "password":"12345678"
+        }
 }
 
 ### Sign in with incorrect details
@@ -116,3 +118,14 @@ Content-Type: application/json
     "password":"ghgjok;jko"
 }
 
+### Integration Signin
+POST http://localhost:3000/users/sign_in
+Content-Type: application/json
+Origin: http://localhost:3030
+
+{ 
+    "user": {
+            "email":"test@example.com",
+            "password":"12345678"
+        }
+}
