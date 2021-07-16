@@ -43,6 +43,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker'
 gem 'devise'
 gem 'devise-jwt'
-
+gem 'fast_jsonapi'
 
 gem "cancancan", "~> 3.3"

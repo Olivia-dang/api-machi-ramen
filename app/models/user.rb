@@ -1,9 +1,11 @@
 class User < ApplicationRecord
+  include Devise::JWT::RevocationStrategies::JTIMatcher
+
   devise  :database_authenticatable,
           :jwt_authenticatable,
           :registerable,
-          jwt_revocation_strategy: JwtDenylist
-  belongs_to :role
+          jwt_revocation_strategy: self
+  belongs_to :role, optional: true
   has_many :items, dependent: :destroy
   validates :first_name, presence: true
 
@@ -12,4 +14,5 @@ class User < ApplicationRecord
   def assign_role
     self.role = Role.find_by name: 'Regular' if role.nil?
   end
+
 end

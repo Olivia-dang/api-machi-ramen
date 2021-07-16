@@ -1,3 +1,26 @@
+### create user
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{ "user": { 
+        "first_name": "Alex",
+        "email": "adam@test.com",
+        "password":"password",
+        "password_confirmation":"password"
+    }
+}
+
+### Sign in with correct details
+POST http://localhost:3000/users/sign_in
+Content-Type: application/json
+
+{ 
+    "user": {
+            "email":"alex@test.com",
+            "password":"password"
+        }
+}
+
 ### Index method
 GET http://localhost:3000/items
 
@@ -93,7 +116,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-    "email": "million@ela.com",
+    "email": "alex@test.com",
     "password":"password",
     "password_confirmation":"password"
 }

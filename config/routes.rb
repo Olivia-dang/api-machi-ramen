@@ -9,7 +9,6 @@ Rails.application.routes.draw do
         sessions: 'users/sessions',
         registrations: 'users/registrations'
     }
-    
   get '/account' => 'accounts#show'
-
+  get '/current_user', to: 'current_user#index'
 end
