@@ -7,8 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 r1 = Role.create({ name: 'Regular', description: 'Can read items' })
-r2 = Role.create({ name: 'Staff', description: 'Can read and create items. Can update and destroy own items' })
-r3 = Role.create({ name: 'Admin', description: 'Can perform any CRUD operation on any resource' })
+r2 = Role.create({ name: 'Admin', description: 'Can perform any CRUD operation on any resource' })
 
 u1 = User.create({ first_name: 'Sally', email: 'sally@example.com', password: 'aaaaaaaa', password_confirmation: 'aaaaaaaa', role_id: r1.id })
 u2 = User.create({ first_name: 'Sue', email: 'sue@example.com', password: 'aaaaaaaa', password_confirmation: 'aaaaaaaa', role_id: r2.id })
