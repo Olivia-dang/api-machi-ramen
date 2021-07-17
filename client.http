@@ -27,10 +27,11 @@ GET http://localhost:3000/items
 ### Test successfully posts an item
 POST http://localhost:3000/items
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjMmIwMDgxMS1hMDU1LTQxOGEtYjMxYS1iOTI3NmQ5MmRkMTQiLCJzdWIiOiIxMCIsInNjcCI6InVzZXIiLCJhdWQiOm51bGwsImlhdCI6MTYyNjQ5NDU0NywiZXhwIjoxNjI2NDk2MzQ3fQ.m9z_mjqYgg0nZ5UJaA0p1ulnIZE_ThB4ZJhfaUBT3mY
 
 {
     "category_id": 1,
-    "name" : "Pikachu",
+    "name" : "nobita",
     "price" : 3.9,
     "description": "the first pokemon"
 }
@@ -57,14 +58,16 @@ PUT http://localhost:3000/items/2
 Content-Type: application/json
 
 {
-    "category_id": 2,
+    "category_id": 1,
     "name" : "Osaka",
     "price" : 6.9,
     "description": "the second biggest city"
 }
 
 ### successfully delete item with id 1
-DELETE http://localhost:3000/items/1
+DELETE http://localhost:3000/items/4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjMmIwMDgxMS1hMDU1LTQxOGEtYjMxYS1iOTI3NmQ5MmRkMTQiLCJzdWIiOiIxMCIsInNjcCI6InVzZXIiLCJhdWQiOm51bGwsImlhdCI6MTYyNjQ5NDU0NywiZXhwIjoxNjI2NDk2MzQ3fQ.m9z_mjqYgg0nZ5UJaA0p1ulnIZE_ThB4ZJhfaUBT3mY
 
 ### unsuccessfully delete item with id 1000
 DELETE http://localhost:3000/items/1000
@@ -130,7 +133,7 @@ Content-Type: application/json
 { "user": 
     {
         "email": "alex@test.com",
-        "password":"password",
+        "password":"password"
     }
 }
 
