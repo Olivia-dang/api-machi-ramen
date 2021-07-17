@@ -7,7 +7,6 @@ class User < ApplicationRecord
           jwt_revocation_strategy: self
   belongs_to :role, optional: true
   has_many :items, dependent: :destroy
-  validates :first_name, presence: true
 
   before_save :assign_role
 

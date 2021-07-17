@@ -64,7 +64,7 @@ Content-Type: application/json
 }
 
 ### successfully delete item with id 1
-DELETE http://localhost:3000/items/2
+DELETE http://localhost:3000/items/1
 
 ### unsuccessfully delete item with id 1000
 DELETE http://localhost:3000/items/1000
@@ -115,21 +115,23 @@ DELETE http://localhost:3000/categories/3000
 POST http://localhost:3000/users
 Content-Type: application/json
 
-{
-    "email": "alex@test.com",
-    "password":"password",
-    "password_confirmation":"password"
+{ "user": 
+    {
+        "email": "alex@test.com",
+        "password":"password",
+        "password_confirmation":"password"
+    }
 }
 
 ### Sign in with correct details
 POST http://localhost:3000/users/sign_in
 Content-Type: application/json
 
-{ 
-    "user": {
-            "email":"test@example.com",
-            "password":"12345678"
-        }
+{ "user": 
+    {
+        "email": "alex@test.com",
+        "password":"password",
+    }
 }
 
 ### Sign in with incorrect details
@@ -137,8 +139,8 @@ POST http://localhost:3000/users/sign_in
 Content-Type: application/json
 
 {
-    "email":"alex3@test.com",
-    "password":"ghgjok;jko"
+    "email":"alex@test.com",
+    "password":"password"
 }
 
 ### Integration Signin
