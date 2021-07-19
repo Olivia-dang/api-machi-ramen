@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::API
-    # include CanCan::ControllerAdditions
     before_action :configure_permitted_parameters, if: :devise_controller?
 
     protected
