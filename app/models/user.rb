@@ -1,10 +1,9 @@
 class User < ApplicationRecord
-  include Devise::JWT::RevocationStrategies::JTIMatcher
 
   devise  :database_authenticatable,
           :jwt_authenticatable,
-          :registerable,
-          jwt_revocation_strategy: self
+          :registerable, :trackable,
+          jwt_revocation_strategy: JwtDenylist
   belongs_to :role, optional: true
   has_many :items, dependent: :destroy
 
