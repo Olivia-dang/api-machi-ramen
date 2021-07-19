@@ -11,7 +11,12 @@ class RolesController < ApplicationController
 
   # GET /roles/1
   def show
-    render json: @role
+    if @role.users.empty?
+      @assosciated_user = 'None'
+    else
+      @assosciated_users = @role.users.map(&:name).join(', ')
+    end
+    render json: @assosciated_users
   end
 
   # POST /roles

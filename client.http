@@ -16,7 +16,7 @@ Content-Type: application/json
 
 { 
     "user": {
-            "email":"alex@test.com",
+            "email":"admin@admin.com",
             "password":"password"
         }
 }
@@ -56,6 +56,7 @@ GET http://localhost:3000/items/5000
 ### update an item
 PUT http://localhost:3000/items/2
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2Njc2Mjk1LCJleHAiOjE2MjY3NjI2OTUsImp0aSI6IjVlZjcwODlhLTVkMmQtNDA3Mi05ZmFlLWI5MTkxNzMwOWVjZCJ9.gcVmOR1GCS5LdwjisCs2l2LKLweZzCTl5bOa-rHZypc
 
 {
     "category_id": 1,
@@ -137,15 +138,6 @@ Content-Type: application/json
     }
 }
 
-### Sign in with incorrect details
-POST http://localhost:3000/users/sign_in
-Content-Type: application/json
-
-{
-    "email":"alex@test.com",
-    "password":"password"
-}
-
 ### Integration Signin
 POST http://localhost:3000/users/sign_in
 Content-Type: application/json
@@ -157,3 +149,8 @@ Origin: http://localhost:3030
             "password":"12345678"
         }
 }
+
+## Test log out
+DELETE http://localhost:3000/users/sign_out
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5N2Y2MmQ5ZS0xYjA5LTQ1YWYtYmYzZi1hODg0MzZkY2U2OGIiLCJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2Njc0NjE1LCJleHAiOjE2MjY3NjEwMTV9.5-Gt_bKpOJjRRXpIDaX0GI03Wi78s9DHJvfPwPsMSH8
