@@ -38,7 +38,7 @@ Origin: http://localhost:3030
 ### Test log out
 DELETE http://localhost:3000/users/sign_out
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2NzU2NTc1LCJleHAiOjE2MjY4NDI5NzUsImp0aSI6Ijc5YTIyOGQzLTA1YzgtNGU3OC05OTEzLTA1YjliODlmZmQ2MyJ9.DbtnCz6Dl3gnZHFLfWaIfCCEkfWGCKyhv_gXJpE1jLE
+Authorization: Bearer 
 
 ### Index method
 GET http://localhost:3000/items
@@ -46,7 +46,7 @@ GET http://localhost:3000/items
 ### Test successfully posts an item
 POST http://localhost:3000/items
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2NzU2NTc1LCJleHAiOjE2MjY4NDI5NzUsImp0aSI6Ijc5YTIyOGQzLTA1YzgtNGU3OC05OTEzLTA1YjliODlmZmQ2MyJ9.DbtnCz6Dl3gnZHFLfWaIfCCEkfWGCKyhv_gXJpE1jLE
+Authorization: Bearer 
 
 {
     "category_id": 1,
@@ -58,7 +58,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1Z
 ### Unsuccessfully post an item (minimum name length: 3)
 POST http://localhost:3000/items
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2NzU0NTE3LCJleHAiOjE2MjY4NDA5MTcsImp0aSI6IjA0MjQ0ZTE1LWQ3YzEtNDE2MC05MDE4LWVhNzI3NWU2YmE2OSJ9.T-PAmTOfX9bx0ID_YB4yrUI2N1RMXhNDqPsDvjZDsdw
+Authorization: Bearer 
 
 {
     "category_id": 1,
@@ -76,7 +76,7 @@ GET http://localhost:3000/items/5000
 ### update an item
 PUT http://localhost:3000/items/2
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2Njc2Mjk1LCJleHAiOjE2MjY3NjI2OTUsImp0aSI6IjVlZjcwODlhLTVkMmQtNDA3Mi05ZmFlLWI5MTkxNzMwOWVjZCJ9.gcVmOR1GCS5LdwjisCs2l2LKLweZzCTl5bOa-rHZypc
+Authorization: Bearer 
 
 {
     "category_id": 1,
@@ -88,7 +88,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1Z
 ### successfully delete item with id 1
 DELETE http://localhost:3000/items/4
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJjMmIwMDgxMS1hMDU1LTQxOGEtYjMxYS1iOTI3NmQ5MmRkMTQiLCJzdWIiOiIxMCIsInNjcCI6InVzZXIiLCJhdWQiOm51bGwsImlhdCI6MTYyNjQ5NDU0NywiZXhwIjoxNjI2NDk2MzQ3fQ.m9z_mjqYgg0nZ5UJaA0p1ulnIZE_ThB4ZJhfaUBT3mY
+Authorization: Bearer 
 
 ### unsuccessfully delete item with id 1000
 DELETE http://localhost:3000/items/1000
@@ -98,4 +98,4 @@ DELETE http://localhost:3000/items/1000
 ### DELETE items
 DELETE http://localhost:3000/items/3
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2NzU2NzI0LCJleHAiOjE2MjY4NDMxMjQsImp0aSI6ImU3ZjYyZTMyLWU4ZDktNGM5Ny05ZDk3LWQxZGZmNWVlZmMwNCJ9.8sZEqtncwUnPTVc8iHjnuJ6MdoC5ghsvJ65dfq15Ndo
+Authorization: Bearer 
