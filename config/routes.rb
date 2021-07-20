@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :roles
   resources :items
   resources :categories
 
