@@ -40,9 +40,13 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
+# generate dummy data to seed
 gem 'faker'
+
+# User Authentication and jwt
 gem 'devise'
 gem 'devise-jwt'
 gem 'fast_jsonapi'
 
-gem "cancancan", "~> 3.3"
+# Authorization
+gem 'pundit'
