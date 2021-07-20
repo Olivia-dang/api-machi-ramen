@@ -10,5 +10,4 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
     }
   get '/account' => 'accounts#show'
-  get '/current_user', to: 'current_user#index'
 end

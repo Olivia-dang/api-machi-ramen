@@ -1,18 +1,20 @@
 ### create user
 POST http://localhost:3000/users
 Content-Type: application/json
+Origin: http://localhost:3030
 
 { "user": { 
         "first_name": "Alex",
-        "email": "adam@test.com",
+        "email": "alex@test.com",
         "password":"password",
         "password_confirmation":"password"
     }
 }
 
-### Sign in with correct details
+### Sign in with admin
 POST http://localhost:3000/users/sign_in
 Content-Type: application/json
+Origin: http://localhost:3030
 
 { 
     "user": {
@@ -21,29 +23,46 @@ Content-Type: application/json
         }
 }
 
+### Sign in with regular user details
+POST http://localhost:3000/users/sign_in
+Content-Type: application/json
+Origin: http://localhost:3030
+
+{ 
+    "user": {
+            "email":"alex@test.com",
+            "password":"password"
+        }
+}
+
+### Test log out
+DELETE http://localhost:3000/users/sign_out
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2NzU2NTc1LCJleHAiOjE2MjY4NDI5NzUsImp0aSI6Ijc5YTIyOGQzLTA1YzgtNGU3OC05OTEzLTA1YjliODlmZmQ2MyJ9.DbtnCz6Dl3gnZHFLfWaIfCCEkfWGCKyhv_gXJpE1jLE
+
 ### Index method
 GET http://localhost:3000/items
 
 ### Test successfully posts an item
 POST http://localhost:3000/items
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2NzU0NTk5LCJleHAiOjE2MjY4NDA5OTksImp0aSI6ImI2NDk3YzdmLTJiOGQtNDg0Yi1iMjA1LTE2OGY3Y2M1NWJiZSJ9.oLe_-Zr_yEJWkehLvbYOg0geCUvXt5im-PxjUyjiBDs
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2NzU2NTc1LCJleHAiOjE2MjY4NDI5NzUsImp0aSI6Ijc5YTIyOGQzLTA1YzgtNGU3OC05OTEzLTA1YjliODlmZmQ2MyJ9.DbtnCz6Dl3gnZHFLfWaIfCCEkfWGCKyhv_gXJpE1jLE
 
 {
     "category_id": 1,
-    "name" : "Created by admin",
+    "name" : "Created by normal",
     "price" : 3.9,
     "description": "the first pokemon"
 }
 
-### Unsuccessfully post an item
+### Unsuccessfully post an item (minimum name length: 3)
 POST http://localhost:3000/items
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2NzU0NTE3LCJleHAiOjE2MjY4NDA5MTcsImp0aSI6IjA0MjQ0ZTE1LWQ3YzEtNDE2MC05MDE4LWVhNzI3NWU2YmE2OSJ9.T-PAmTOfX9bx0ID_YB4yrUI2N1RMXhNDqPsDvjZDsdw
 
 {
     "category_id": 1,
-    "name" : "Khong tao duoc",
+    "name" : "Kh",
     "price" : 6.9,
     "description": "the second pokemon"
 }
@@ -76,72 +95,7 @@ DELETE http://localhost:3000/items/1000
 
 
 
-### Categories index method
-GET http://localhost:3000/categories
-
-### Test successfully posts an category
-POST http://localhost:3000/categories
+### DELETE items
+DELETE http://localhost:3000/items/3
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2MjM1OTk4LCJleHAiOjE2MjYyMzk1OTgsImp0aSI6ImY2OWMyZGIyLTdlMmYtNDE1Ni1iNzA4LTZhYzFjYjk3ZTllNCJ9.ixUlx-0yk1_rv3ol5s-BQOmste-ifVYlpH8F3V01q-c
-{
-    "name": "drink"
-}
-
-### Unsuccessfully post an category
-POST http://localhost:3000/categories
-Content-Type: application/json
-
-{
-    "name" : "Ba",
-}
-
-### show category id: 1
-GET http://localhost:3000/categories/1
-
-### unsuccessfully show category id 5000
-GET http://localhost:3000/categories/5000
-
-### update a category
-PUT http://localhost:3000/categories/1
-Content-Type: application/json
-
-{
-    "name": "pokemon"
-}
-
-### successfully delete category with id 3
-DELETE http://localhost:3000/categories/3
-
-### unsuccessfully delete category with id 1000
-DELETE http://localhost:3000/categories/3000
-
-
-### create user
-POST http://localhost:3000/users
-Content-Type: application/json
-
-{ "user": 
-    {
-        "email": "alex@test.com",
-        "password":"password",
-        "password_confirmation":"password"
-    }
-}
-
-### Sign in with correct details
-POST http://localhost:3000/users/sign_in
-Content-Type: application/json
-Origin: http://localhost:3030
-
-{ "user": 
-    {
-        "email": "alex@test.com",
-        "password":"password"
-    }
-}
-
-
-### Test log out
-DELETE http://localhost:3000/users/sign_out
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiI5N2Y2MmQ5ZS0xYjA5LTQ1YWYtYmYzZi1hODg0MzZkY2U2OGIiLCJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2Njc0NjE1LCJleHAiOjE2MjY3NjEwMTV9.5-Gt_bKpOJjRRXpIDaX0GI03Wi78s9DHJvfPwPsMSH8
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2NzU2NzI0LCJleHAiOjE2MjY4NDMxMjQsImp0aSI6ImU3ZjYyZTMyLWU4ZDktNGM5Ny05ZDk3LWQxZGZmNWVlZmMwNCJ9.8sZEqtncwUnPTVc8iHjnuJ6MdoC5ghsvJ65dfq15Ndo
