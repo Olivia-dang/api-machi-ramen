@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe "Items", type: :request do
-  before do
-    sign_in create(:user, email: "admin@test.com", password: "iamhungry", id:1, role: "Admin")
-  end
-
   describe "GET /items" do
     before do
       get "/items"
@@ -14,6 +10,10 @@ RSpec.describe "Items", type: :request do
     end
   end
   
+  before do
+    sign_in create(:user, email: "admin@test.com", password: "iamhungry", id:1, role: "Admin")
+  end
+
   describe "POST /items" do
     let!(:category) { Category.create! name: 'foo'}
     before do
@@ -41,24 +41,30 @@ RSpec.describe "Items", type: :request do
     end
   end
 
-  # describe "GET /items/:id" do
-  #   let!(:category) { Category.create! name: 'foo'}
-  #   let!(:item) { Item.create! name: "Charizard", price: "10.3", category_id: category.id}
-  #   it "show an item" do
-  #     get "/items/#{item.id}"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
+  describe "GET /items/:id" do
+    let!(:category) { Category.create! name: 'foo'}
+    let!(:item) { Item.create! name: "Charizard", price: "10.3", category_id: category.id, user_id: 1}
+    before do
+      get "/items/#{item.id}"
+    end
+    it "show an item" do
+      expect(response).to have_http_status(:success)
+    end
+    it 'returns the item\'s id' do
+      expect(JSON.parse(response.body)['name']).to eq('Charizard')
+    end
+  end
 
-  # describe "DELETE /items/:id" do
-  #   let!(:category) { Category.create! name: 'foo'}
-  #   let!(:item) { Item.create! name: "Charizard", price: "10.3", category_id: category.id}
-  #   it "delete an item" do
-  #     expect {
-  #       delete "/items/#{item.id}"
-  #     }.to change { Item.count }.by(-1)
+  describe "DELETE /items/:id" do
+    let!(:category) { Category.create! name: 'foo'}
+    let!(:item) { Item.create! name: "Charizard", price: "10.3", category_id: category.id, user_id: 1}
 
-  #     expect(response).to have_http_status :no_content
-  #   end
-  # end  
+    it "delete an item" do
+      expect {
+        delete "/items/#{item.id}"
+      }.to change { Item.count }.by(-1)
+
+      expect(response).to have_http_status :no_content
+    end
+  end  
 end

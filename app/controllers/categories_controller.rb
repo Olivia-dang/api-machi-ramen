@@ -1,6 +1,7 @@
 class CategoriesController < ApplicationController
     before_action :set_category, only: [:show, :update, :destroy]
     before_action :authenticate_user!, only: [:create, :update, :destroy]
+    rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   # GET /categories
   def index
@@ -16,6 +17,7 @@ class CategoriesController < ApplicationController
   # POST /categories
   def create
     @category = Category.new(category_params)
+    authorize @category
 
     if @category.save
       render json: @category, status: :created, location: @category
@@ -26,6 +28,7 @@ class CategoriesController < ApplicationController
 
   # PATCH/PUT /categories/1
   def update
+    authorize @category
     if @category.update(category_params)
       render json: @category
     else
@@ -35,6 +38,7 @@ class CategoriesController < ApplicationController
 
   # DELETE /categories/1
   def destroy
+    authorize @category
     @category.destroy
   end
 
@@ -45,5 +49,11 @@ class CategoriesController < ApplicationController
   end
   def set_category
     @category = Category.find(params[:id])
+  end
+  def user_not_authorized
+    render json: {
+      status: 401,
+      message: "You are not authorized to perform this action with category."
+    }, status: :unauthorized
   end
 end
