@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   
-  resources :roles
   resources :items
   resources :categories
 
@@ -10,5 +9,4 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
     }
   get '/account' => 'accounts#show'
-  get '/current_user', to: 'current_user#index'
 end

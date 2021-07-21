@@ -50,3 +50,8 @@ gem 'fast_jsonapi'
 
 # Authorization
 gem 'pundit'
+
+group :test do
+  # tool for creating test objects in RSpec
+  gem 'factory_bot_rails'
+end

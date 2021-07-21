@@ -41,13 +41,6 @@ ActiveRecord::Schema.define(version: 2021_07_19_063534) do
     t.index ["jti"], name: "index_jwt_denylist_on_jti"
   end
 
-  create_table "roles", force: :cascade do |t|
-    t.string "name"
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -59,7 +52,7 @@ ActiveRecord::Schema.define(version: 2021_07_19_063534) do
     t.string "first_name"
     t.string "last_name"
     t.string "phone_number"
-    t.bigint "role_id", null: false
+    t.string "role"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
@@ -67,10 +60,8 @@ ActiveRecord::Schema.define(version: 2021_07_19_063534) do
     t.string "last_sign_in_ip"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-    t.index ["role_id"], name: "index_users_on_role_id"
   end
 
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
-  add_foreign_key "users", "roles"
 end

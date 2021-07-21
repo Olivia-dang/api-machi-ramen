@@ -57,7 +57,7 @@ class ItemsController < ApplicationController
   def user_not_authorized
     render json: {
       status: 401,
-      message: "You are not authorized to perform this action."
+      message: "You are not authorized to perform this action with items."
     }, status: :unauthorized
   end
 end

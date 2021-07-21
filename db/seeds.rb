@@ -8,25 +8,22 @@
 require 'faker'
 
 # truncate all tables and reset the identity sequence
-%w[users categories items roles].each do |table|
+%w[users categories items].each do |table|
     ActiveRecord::Base.connection.execute("TRUNCATE TABLE #{table} RESTART IDENTITY CASCADE;")
 end
 
-# create roles
-r1 = Role.create({ name: 'Admin', description: 'Can perform any CRUD operation on any resource' })
-r2 = Role.create({ name: 'Regular', description: 'Can read items' })
 
 # create users
-u1 = User.create({ first_name: 'Admin', email: 'admin@admin.com', password: 'password', password_confirmation: 'aaaaaaaa', role_id: r1.id })
+u1 = User.create({ first_name: 'Admin', email: 'admin@admin.com', password: 'password', password_confirmation: 'password', role: "Admin" })
 4.times do |i|
     User.create(
-        role_id: r2.id,
+        role: 'Regular',
         first_name: Faker::JapaneseMedia::Doraemon.character,
         last_name: Faker::Name.last_name,
         email: "user#{i+1}@test.com",
         phone_number: Faker::PhoneNumber.phone_number_with_country_code,
-        password: 'pppppp',
-        password_confirmation: 'pppppp'
+        password: 'password',
+        password_confirmation: 'password'
     )
     puts "created user #{i + 1 }"
 end

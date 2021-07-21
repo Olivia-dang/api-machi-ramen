@@ -8,11 +8,13 @@ class ItemPolicy < ApplicationPolicy
     end
    
     def update?
-      return true if user.present? && user == item.user
+      user.admin?
+      # return true if user.present? && user == item.user
     end
    
     def destroy?
-      return true if user.present? && user == item.user
+      user.admin?
+      # return true if user.present? && user == item.user
     end
    
     private

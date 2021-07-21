@@ -4,17 +4,16 @@ class User < ApplicationRecord
           :jwt_authenticatable,
           :registerable, :trackable,
           jwt_revocation_strategy: JwtDenylist
-  belongs_to :role, optional: true
   has_many :items, dependent: :destroy
 
   before_save :assign_role
 
   def assign_role
-    self.role = Role.find_by name: 'Regular' if role.nil?
+    self.role = 'Regular' if role.nil?
   end
 
   def admin?
-    role.name == "Admin"
+    self.role == "Admin"
   end
 
 end
