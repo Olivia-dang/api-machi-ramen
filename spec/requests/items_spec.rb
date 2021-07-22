@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Items", type: :request do
+  let (:item) { build_item }
+  let (:category) { FactoryBot.create(:category)}
+
   describe "GET /items" do
     before do
       get "/items"
@@ -15,9 +18,8 @@ RSpec.describe "Items", type: :request do
   end
 
   describe "POST /items" do
-    let!(:category) { Category.create! name: 'foo'}
     before do
-      post "/items", params: { item: { name: "Charizard", price: "10.3", category_id: category.id, user_id: 1}}
+      post "/items", params: { item: { name: item.name, price: item.price, category_id: category.id, user_id: item.user_id}}
     end
     it "creates a new item" do
       expect(response).to have_http_status :created
@@ -26,10 +28,13 @@ RSpec.describe "Items", type: :request do
       expect(JSON.parse(response.body)['name']).to eq('Charizard')
     end
   end
+  context "When item name is less than 3 characters" do
+
+  end
 
   describe "PUT /items/:id" do
-    let!(:category) { Category.create! name: 'foo'}
     let!(:item) { Item.create! name: "Charizard", price: "10.3", category_id: category.id, user_id: 1}
+    # let!(:item) { FactoryBot.create (:item)}
     before do
       put "/items/#{item.id}", params: { item: { name: "Venusaur", price: "8.3", category_id: category.id, description: "grass"}}
     end
@@ -42,7 +47,6 @@ RSpec.describe "Items", type: :request do
   end
 
   describe "GET /items/:id" do
-    let!(:category) { Category.create! name: 'foo'}
     let!(:item) { Item.create! name: "Charizard", price: "10.3", category_id: category.id, user_id: 1}
     before do
       get "/items/#{item.id}"
@@ -56,7 +60,6 @@ RSpec.describe "Items", type: :request do
   end
 
   describe "DELETE /items/:id" do
-    let!(:category) { Category.create! name: 'foo'}
     let!(:item) { Item.create! name: "Charizard", price: "10.3", category_id: category.id, user_id: 1}
 
     it "delete an item" do

@@ -38,7 +38,7 @@ Origin: http://localhost:3030
 ### Test log out
 DELETE http://localhost:3000/users/sign_out
 Content-Type: application/json
-Authorization: Bearer ehbGciOiJIUzI1NiJ9.eyJzdWIiOiI2Iiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2OTMxNjg3LCJleHAiOjE2MjcwMTgwODcsImp0aSI6ImRiN2FlMmFjLTQwMmYtNGEwZi1iYjRkLWU1NmQ4OTRmNzcyOCJ9.oA1UzdshXbvcaTl_omsmcKGbLBb14yHmxHquSjVQK3Y
+Authorization: Bearer 
 
 ### Index method
 GET http://localhost:3000/items
@@ -51,7 +51,7 @@ Authorization: Bearer
 {
     "category_id": 1,
     "name" : "Created by normal",
-    "price" : 3.9,
+    "price" : 0,
     "description": "the first pokemon"
 }
 

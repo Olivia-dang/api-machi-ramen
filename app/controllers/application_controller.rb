@@ -1,13 +1,11 @@
 class ApplicationController < ActionController::API
     before_action :configure_permitted_parameters, if: :devise_controller?
     include Pundit
-    rescue_from ActiveRecord::RecordNotUnique, with: :duplicate_record_response
-
-    
+    rescue_from ActiveRecord::RecordNotUnique, with: :duplicate_error_response
+  
     protected
-
-
-    def duplicate_record_response(exception)
+    # rescue method for duplicate email error
+    def duplicate_error_response(exception)
         render json: { error: exception.message }, status: :bad_request
     end
 
