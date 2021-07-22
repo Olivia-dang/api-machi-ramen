@@ -44,12 +44,17 @@ class CategoriesController < ApplicationController
 
   
   private
+  # returning only the permitted keys and values
   def category_params
     params.require(:category).permit(:name)
   end
+
+  # Find the category with id from params
   def set_category
     @category = Category.find(params[:id])
   end
+
+  # rescue from unauthorized error
   def user_not_authorized
     render json: {
       status: 401,

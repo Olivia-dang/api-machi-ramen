@@ -9,7 +9,26 @@ RSpec.describe "Categories", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
-  
+
+  context "When user's role is not admin" do
+    before do
+      sign_in create(:user, email: "test@test.com", password: "iamhungry", id:5, role: "Regular")
+    end
+    it "they cannot create a new menu category" do
+      post "/categories", params: { category: { name: "Hello"}}
+      expect(response).to have_http_status :unauthorized
+    end
+    let!(:category) { Category.create! name: "Charmander"}
+    it "they cannot update a new menu category" do
+      put "/categories/#{category.id}", params: { category: { name: "Venusaur"}}
+      expect(response).to have_http_status :unauthorized
+    end
+    it "they cannot delete a category" do
+      delete "/categories/#{category.id}"
+      expect(response).to have_http_status :unauthorized
+    end
+  end
+
   before do
     sign_in create(:user, email: "admin@test.com", password: "iamhungry", id:1, role: "Admin")
   end
@@ -23,6 +42,25 @@ RSpec.describe "Categories", type: :request do
     end
     it 'returns the category\'s id' do
       expect(JSON.parse(response.body)['name']).to eq('Fire')
+    end
+  end
+
+  context "When new category name is less than 3 characters" do
+    before do
+      post "/categories", params: { category: { name: "Hi"}}
+    end
+    it "returns 422 Unprocessable Entity" do
+      expect(response.status).to eq(422)
+    end
+    it 'returns 422 error message' do
+      expect(JSON.parse(response.body)['name']).to eq(["is too short (minimum is 3 characters)"])
+    end
+  end
+
+  context "When category id cannot be found" do
+    it "returns 404 Not Found" do
+      get "/categories/5000"
+      expect(response.status).to eq(404)
     end
   end
 

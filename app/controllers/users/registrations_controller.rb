@@ -2,6 +2,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
   private
 
+  # response when user sign up
   def respond_with(resource, _opts = {})
     if resource.persisted?
       render json: {

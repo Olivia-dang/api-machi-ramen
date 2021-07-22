@@ -43,17 +43,18 @@ class ItemsController < ApplicationController
     @item.destroy
   end
 
-  def edit
-  end
-
   private
+  # returning only the permitted keys and values
   def item_params
     params.require(:item).permit(:category_id, :name, :price, :description)
   end
+
+  # Find the item with id from params
   def set_item
     @item = Item.find(params[:id])
   end
-
+  
+  # rescue from unauthorized error
   def user_not_authorized
     render json: {
       status: 401,
