@@ -34,7 +34,8 @@ class ItemsController < ApplicationController
   def update
     authorize @item
     if @item.update(item_params)
-      render json: @item
+      item_serializer = ItemSerializer.new(item: @item)
+      render json: item_serializer.serialize_new_item()
     else
       render json: @item.errors, status: :unprocessable_entity
     end
