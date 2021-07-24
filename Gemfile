@@ -55,3 +55,8 @@ group :test do
   # tool for creating test objects in RSpec
   gem 'factory_bot_rails'
 end
+
+
+gem "aws-sdk-s3", "~> 1.96"
+
+gem "mini_magick", "~> 4.11"

@@ -6,12 +6,14 @@ class ItemsController < ApplicationController
   # GET /items
   def index
     @items = Item.all 
-    render json: @items
+    items_array = MenuSerializer.new(@items)
+    render json: items_array.serialize_new_items()
   end
 
   # GET /items/1
   def show
-    render json: @item
+    item_serializer = ItemSerializer.new(item: @item)
+    render json: item_serializer.serialize_new_item()
   end
 
   # POST /items
@@ -21,7 +23,8 @@ class ItemsController < ApplicationController
     authorize @item
 
     if @item.save
-      render json: @item, status: :created, location: @item
+      item_serializer = ItemSerializer.new(item: @item)
+      render json: item_serializer.serialize_new_item() , status: :created, location: @item
     else
       render json: @item.errors, status: :unprocessable_entity
     end
@@ -46,7 +49,8 @@ class ItemsController < ApplicationController
   private
   # returning only the permitted keys and values
   def item_params
-    params.require(:item).permit(:category_id, :name, :price, :description)
+    # params.require(:item).permit(:category_id, :name, :price, :description)
+    params.permit(:category_id, :name, :price, :description, :image)
   end
 
   # Find the item with id from params
