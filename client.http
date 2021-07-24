@@ -51,14 +51,14 @@ Authorization: Bearer
 {
     "category_id": 1,
     "name" : "Created by normal",
-    "price" : 0,
+    "price" : 90,
     "description": "the first pokemon"
 }
 
 ### Unsuccessfully post an item (minimum name length: 3)
 POST http://localhost:3000/items
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxIiwic2NwIjoidXNlciIsImF1ZCI6bnVsbCwiaWF0IjoxNjI2OTM2NTkwLCJleHAiOjE2MjcwMjI5OTAsImp0aSI6IjFmZjVlZjg3LTNjNjQtNDNhZi1iY2VmLTY5MDZiOTdlYWI3MSJ9.BGHWyknUYOUFaqk9ZfavU7Qjvfaf0yDr3O7ihCLy2z0
+Authorization: Bearer 
 
 {
     "category_id": 1,
