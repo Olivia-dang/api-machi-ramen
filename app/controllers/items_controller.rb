@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :update, :destroy, :edit]
   before_action :authenticate_user!, only: [:create, :update, :destroy]
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
+  rescue_from ActiveSupport::MessageVerifier::InvalidSignature, :with => :invalid_signature
 
   # GET /items
   def index
@@ -65,5 +66,10 @@ class ItemsController < ApplicationController
       status: 401,
       message: "You are not authorized to perform this action with items."
     }, status: :unauthorized
+  end
+
+  def invalid_signature(exception)
+    render json: { error: "Item Image is compulsory. Please upload one" }, status: :bad_request
+    puts exception
   end
 end
