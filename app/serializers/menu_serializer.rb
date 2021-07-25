@@ -2,7 +2,7 @@ class MenuSerializer
     def initialize(items)
       @items = items
     end
-
+    # Create an array of items information and convert to json to send to front-end
     def serialize_new_items()
         serialized_array = []
         @items.each do |item|

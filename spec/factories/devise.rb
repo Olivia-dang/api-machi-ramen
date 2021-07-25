@@ -1,4 +1,6 @@
 FactoryBot.define do
+    # Declare user, category, item to use factorybot for DRY test
+    
     factory :user do
         # id {1}
         email {"test@test.com"}
