@@ -35,20 +35,6 @@ RSpec.describe "Items", type: :request do
     sign_in create(:user, email: "admin@test.com", password: "iamhungry", id:1, role: "Admin")
   end
 
-  # describe "POST /items" do
-  #   before do
-  #     test_image = 
-  #     @item = Item.new(name: "Charizard", price: "10.3", category_id: category.id, user_id: 1)
-  #     post "/items", params: { @item}
-  #   end
-  #   it "creates a new item" do
-  #     expect(response).to have_http_status :created
-  #   end
-  #   it 'returns the item\'s id' do
-  #     expect(JSON.parse(response.body)['name']).to eq('Pikachu')
-  #   end
-  # end
-
   describe 'POST /create' do
     before do
       post "/items", params: {
