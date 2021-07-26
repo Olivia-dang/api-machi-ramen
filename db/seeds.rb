@@ -32,7 +32,7 @@ u1 = User.create({ first_name: 'Admin', email: 'admin@admin.com', password: 'pas
 end
 
 # create categories
-c1 = Category.create({ name: 'Starter' })
+c1 = Category.create({ name: 'Entrees' })
 c2 = Category.create({ name: 'Drink' })
 c3 = Category.create({ name: 'Main' })
 c4 = Category.create({ name: 'Dessert' })
@@ -48,7 +48,7 @@ puts "Created 4 categories"
         price: Faker::Number.decimal(l_digits: 2)
     })
     item.image.attach(io: File.open(Rails.root / 'docs' / 'item_seed' / "starter-#{index + 1}.png"), filename:"starter-#{index + 1}.png")
-    puts "created Starter item #{index + 1 }"
+    puts "created Entrees item #{index + 1 }"
 end
 
 2.times do |index|
