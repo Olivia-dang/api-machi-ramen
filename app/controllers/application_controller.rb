@@ -9,13 +9,11 @@ class ApplicationController < ActionController::API
     # when a param is missing
     def param_missing(exception)
         render json: { error: exception.message }, status: :bad_request
-        puts exception
     end
 
     # rescue method for duplicate email error
     def duplicate_error_response(exception)
         render json: { error: exception.message }, status: :bad_request
-        puts exception
     end
 
     # rescue method when couldn't find the record requested
