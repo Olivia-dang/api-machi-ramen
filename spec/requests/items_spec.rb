@@ -87,7 +87,7 @@ RSpec.describe "Items", type: :request do
 
 
   describe "PUT /items/:id" do
-    let!(:item) { Item.create! name: "Charizard", price: "10.3", category_id: category.id, user_id: 1}
+    let!(:item) { Item.create! name: "Charizard", price: "10.3", category_id: category.id, user_id: 1, image: Rack::Test::UploadedFile.new("#{Rails.root}/spec/fixtures/files/pikachu.png")}
     before do
       put "/items/#{item.id}", params: {
         image: Rack::Test::UploadedFile.new("#{Rails.root}/spec/fixtures/files/pikachu.png"),
